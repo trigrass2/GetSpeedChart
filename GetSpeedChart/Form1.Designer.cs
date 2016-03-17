@@ -30,29 +30,31 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SC_Main = new System.Windows.Forms.SplitContainer();
-            this.PV_Chart = new OxyPlot.WindowsForms.PlotView();
-            this.CB_IP = new System.Windows.Forms.ComboBox();
-            this.ll_ip = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.CB_App = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.NUD_Time = new System.Windows.Forms.NumericUpDown();
-            this.BT_Login = new System.Windows.Forms.Button();
-            this.BT_Start = new System.Windows.Forms.Button();
-            this.BT_Pause = new System.Windows.Forms.Button();
-            this.RD_MoveID = new System.Windows.Forms.RadioButton();
-            this.RD_Time = new System.Windows.Forms.RadioButton();
-            this.GB_Setting = new System.Windows.Forms.GroupBox();
             this.GB_Analysis = new System.Windows.Forms.GroupBox();
             this.CLB_Item = new System.Windows.Forms.CheckedListBox();
+            this.BT_Pause = new System.Windows.Forms.Button();
+            this.BT_Start = new System.Windows.Forms.Button();
+            this.BT_Login = new System.Windows.Forms.Button();
+            this.GB_Setting = new System.Windows.Forms.GroupBox();
+            this.RD_Time = new System.Windows.Forms.RadioButton();
+            this.CB_IP = new System.Windows.Forms.ComboBox();
+            this.RD_MoveID = new System.Windows.Forms.RadioButton();
+            this.ll_ip = new System.Windows.Forms.Label();
+            this.CB_App = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NUD_Time = new System.Windows.Forms.NumericUpDown();
+            this.PV_Chart = new OxyPlot.WindowsForms.PlotView();
             this.timer_Refresh = new System.Windows.Forms.Timer(this.components);
+            this.RB_All = new System.Windows.Forms.RadioButton();
+            this.RB_None = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.SC_Main)).BeginInit();
             this.SC_Main.Panel1.SuspendLayout();
             this.SC_Main.Panel2.SuspendLayout();
             this.SC_Main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Time)).BeginInit();
-            this.GB_Setting.SuspendLayout();
             this.GB_Analysis.SuspendLayout();
+            this.GB_Setting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Time)).BeginInit();
             this.SuspendLayout();
             // 
             // SC_Main
@@ -76,18 +78,88 @@
             this.SC_Main.SplitterDistance = 276;
             this.SC_Main.TabIndex = 0;
             // 
-            // PV_Chart
+            // GB_Analysis
             // 
-            this.PV_Chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PV_Chart.Location = new System.Drawing.Point(0, 0);
-            this.PV_Chart.Name = "PV_Chart";
-            this.PV_Chart.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.PV_Chart.Size = new System.Drawing.Size(550, 547);
-            this.PV_Chart.TabIndex = 0;
-            this.PV_Chart.Text = "plotView1";
-            this.PV_Chart.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.PV_Chart.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.PV_Chart.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.GB_Analysis.Controls.Add(this.RB_None);
+            this.GB_Analysis.Controls.Add(this.RB_All);
+            this.GB_Analysis.Controls.Add(this.CLB_Item);
+            this.GB_Analysis.Location = new System.Drawing.Point(13, 323);
+            this.GB_Analysis.Name = "GB_Analysis";
+            this.GB_Analysis.Size = new System.Drawing.Size(251, 212);
+            this.GB_Analysis.TabIndex = 12;
+            this.GB_Analysis.TabStop = false;
+            this.GB_Analysis.Text = "分析";
+            // 
+            // CLB_Item
+            // 
+            this.CLB_Item.FormattingEnabled = true;
+            this.CLB_Item.Location = new System.Drawing.Point(6, 39);
+            this.CLB_Item.Name = "CLB_Item";
+            this.CLB_Item.Size = new System.Drawing.Size(239, 169);
+            this.CLB_Item.TabIndex = 0;
+            this.CLB_Item.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CLB_Item_ItemCheck);
+            this.CLB_Item.SelectedIndexChanged += new System.EventHandler(this.CLB_Item_SelectedIndexChanged);
+            // 
+            // BT_Pause
+            // 
+            this.BT_Pause.Enabled = false;
+            this.BT_Pause.Location = new System.Drawing.Point(58, 281);
+            this.BT_Pause.Name = "BT_Pause";
+            this.BT_Pause.Size = new System.Drawing.Size(128, 36);
+            this.BT_Pause.TabIndex = 8;
+            this.BT_Pause.Text = "暂停";
+            this.BT_Pause.UseVisualStyleBackColor = true;
+            this.BT_Pause.Click += new System.EventHandler(this.BT_Pause_Click);
+            // 
+            // BT_Start
+            // 
+            this.BT_Start.Enabled = false;
+            this.BT_Start.Location = new System.Drawing.Point(58, 239);
+            this.BT_Start.Name = "BT_Start";
+            this.BT_Start.Size = new System.Drawing.Size(128, 36);
+            this.BT_Start.TabIndex = 7;
+            this.BT_Start.Text = "开始";
+            this.BT_Start.UseVisualStyleBackColor = true;
+            this.BT_Start.Click += new System.EventHandler(this.BT_Start_Click);
+            // 
+            // BT_Login
+            // 
+            this.BT_Login.Location = new System.Drawing.Point(58, 197);
+            this.BT_Login.Name = "BT_Login";
+            this.BT_Login.Size = new System.Drawing.Size(128, 36);
+            this.BT_Login.TabIndex = 6;
+            this.BT_Login.Text = "登录";
+            this.BT_Login.UseVisualStyleBackColor = true;
+            this.BT_Login.Click += new System.EventHandler(this.BT_Login_Click);
+            // 
+            // GB_Setting
+            // 
+            this.GB_Setting.Controls.Add(this.RD_Time);
+            this.GB_Setting.Controls.Add(this.CB_IP);
+            this.GB_Setting.Controls.Add(this.RD_MoveID);
+            this.GB_Setting.Controls.Add(this.ll_ip);
+            this.GB_Setting.Controls.Add(this.CB_App);
+            this.GB_Setting.Controls.Add(this.label2);
+            this.GB_Setting.Controls.Add(this.label3);
+            this.GB_Setting.Controls.Add(this.NUD_Time);
+            this.GB_Setting.Location = new System.Drawing.Point(13, 2);
+            this.GB_Setting.Name = "GB_Setting";
+            this.GB_Setting.Size = new System.Drawing.Size(251, 180);
+            this.GB_Setting.TabIndex = 11;
+            this.GB_Setting.TabStop = false;
+            this.GB_Setting.Text = "配置";
+            // 
+            // RD_Time
+            // 
+            this.RD_Time.AutoSize = true;
+            this.RD_Time.Checked = true;
+            this.RD_Time.Location = new System.Drawing.Point(21, 148);
+            this.RD_Time.Name = "RD_Time";
+            this.RD_Time.Size = new System.Drawing.Size(49, 17);
+            this.RD_Time.TabIndex = 10;
+            this.RD_Time.TabStop = true;
+            this.RD_Time.Text = "时间";
+            this.RD_Time.UseVisualStyleBackColor = true;
             // 
             // CB_IP
             // 
@@ -102,6 +174,16 @@
             this.CB_IP.TabIndex = 0;
             this.CB_IP.Text = "127.0.0.1";
             // 
+            // RD_MoveID
+            // 
+            this.RD_MoveID.AutoSize = true;
+            this.RD_MoveID.Location = new System.Drawing.Point(76, 149);
+            this.RD_MoveID.Name = "RD_MoveID";
+            this.RD_MoveID.Size = new System.Drawing.Size(63, 17);
+            this.RD_MoveID.TabIndex = 9;
+            this.RD_MoveID.Text = "MoveID";
+            this.RD_MoveID.UseVisualStyleBackColor = true;
+            // 
             // ll_ip
             // 
             this.ll_ip.AutoSize = true;
@@ -110,15 +192,6 @@
             this.ll_ip.Size = new System.Drawing.Size(47, 13);
             this.ll_ip.TabIndex = 1;
             this.ll_ip.Text = "CS8C IP";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "应用程序名";
             // 
             // CB_App
             // 
@@ -131,6 +204,15 @@
             this.CB_App.Size = new System.Drawing.Size(134, 21);
             this.CB_App.TabIndex = 2;
             this.CB_App.Text = "DataBase";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "应用程序名";
             // 
             // label3
             // 
@@ -164,102 +246,48 @@
             0,
             65536});
             // 
-            // BT_Login
+            // PV_Chart
             // 
-            this.BT_Login.Location = new System.Drawing.Point(58, 197);
-            this.BT_Login.Name = "BT_Login";
-            this.BT_Login.Size = new System.Drawing.Size(128, 36);
-            this.BT_Login.TabIndex = 6;
-            this.BT_Login.Text = "登录";
-            this.BT_Login.UseVisualStyleBackColor = true;
-            this.BT_Login.Click += new System.EventHandler(this.BT_Login_Click);
-            // 
-            // BT_Start
-            // 
-            this.BT_Start.Enabled = false;
-            this.BT_Start.Location = new System.Drawing.Point(58, 252);
-            this.BT_Start.Name = "BT_Start";
-            this.BT_Start.Size = new System.Drawing.Size(128, 36);
-            this.BT_Start.TabIndex = 7;
-            this.BT_Start.Text = "开始";
-            this.BT_Start.UseVisualStyleBackColor = true;
-            this.BT_Start.Click += new System.EventHandler(this.BT_Start_Click);
-            // 
-            // BT_Pause
-            // 
-            this.BT_Pause.Enabled = false;
-            this.BT_Pause.Location = new System.Drawing.Point(58, 309);
-            this.BT_Pause.Name = "BT_Pause";
-            this.BT_Pause.Size = new System.Drawing.Size(128, 36);
-            this.BT_Pause.TabIndex = 8;
-            this.BT_Pause.Text = "暂停";
-            this.BT_Pause.UseVisualStyleBackColor = true;
-            this.BT_Pause.Click += new System.EventHandler(this.BT_Pause_Click);
-            // 
-            // RD_MoveID
-            // 
-            this.RD_MoveID.AutoSize = true;
-            this.RD_MoveID.Location = new System.Drawing.Point(76, 149);
-            this.RD_MoveID.Name = "RD_MoveID";
-            this.RD_MoveID.Size = new System.Drawing.Size(63, 17);
-            this.RD_MoveID.TabIndex = 9;
-            this.RD_MoveID.Text = "MoveID";
-            this.RD_MoveID.UseVisualStyleBackColor = true;
-            // 
-            // RD_Time
-            // 
-            this.RD_Time.AutoSize = true;
-            this.RD_Time.Checked = true;
-            this.RD_Time.Location = new System.Drawing.Point(21, 148);
-            this.RD_Time.Name = "RD_Time";
-            this.RD_Time.Size = new System.Drawing.Size(49, 17);
-            this.RD_Time.TabIndex = 10;
-            this.RD_Time.TabStop = true;
-            this.RD_Time.Text = "时间";
-            this.RD_Time.UseVisualStyleBackColor = true;
-            // 
-            // GB_Setting
-            // 
-            this.GB_Setting.Controls.Add(this.RD_Time);
-            this.GB_Setting.Controls.Add(this.CB_IP);
-            this.GB_Setting.Controls.Add(this.RD_MoveID);
-            this.GB_Setting.Controls.Add(this.ll_ip);
-            this.GB_Setting.Controls.Add(this.CB_App);
-            this.GB_Setting.Controls.Add(this.label2);
-            this.GB_Setting.Controls.Add(this.label3);
-            this.GB_Setting.Controls.Add(this.NUD_Time);
-            this.GB_Setting.Location = new System.Drawing.Point(13, 2);
-            this.GB_Setting.Name = "GB_Setting";
-            this.GB_Setting.Size = new System.Drawing.Size(251, 180);
-            this.GB_Setting.TabIndex = 11;
-            this.GB_Setting.TabStop = false;
-            this.GB_Setting.Text = "配置";
-            // 
-            // GB_Analysis
-            // 
-            this.GB_Analysis.Controls.Add(this.CLB_Item);
-            this.GB_Analysis.Location = new System.Drawing.Point(13, 351);
-            this.GB_Analysis.Name = "GB_Analysis";
-            this.GB_Analysis.Size = new System.Drawing.Size(251, 175);
-            this.GB_Analysis.TabIndex = 12;
-            this.GB_Analysis.TabStop = false;
-            this.GB_Analysis.Text = "分析";
-            // 
-            // CLB_Item
-            // 
-            this.CLB_Item.FormattingEnabled = true;
-            this.CLB_Item.Location = new System.Drawing.Point(21, 20);
-            this.CLB_Item.Name = "CLB_Item";
-            this.CLB_Item.Size = new System.Drawing.Size(206, 139);
-            this.CLB_Item.TabIndex = 0;
-            this.CLB_Item.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CLB_Item_ItemCheck);
-            this.CLB_Item.SelectedIndexChanged += new System.EventHandler(this.CLB_Item_SelectedIndexChanged);
+            this.PV_Chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PV_Chart.Location = new System.Drawing.Point(0, 0);
+            this.PV_Chart.Name = "PV_Chart";
+            this.PV_Chart.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.PV_Chart.Size = new System.Drawing.Size(550, 547);
+            this.PV_Chart.TabIndex = 0;
+            this.PV_Chart.Text = "plotView1";
+            this.PV_Chart.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.PV_Chart.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.PV_Chart.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // timer_Refresh
             // 
             this.timer_Refresh.Enabled = true;
             this.timer_Refresh.Interval = 1000;
             this.timer_Refresh.Tick += new System.EventHandler(this.timer_Refresh_Tick);
+            // 
+            // RB_All
+            // 
+            this.RB_All.AutoSize = true;
+            this.RB_All.Location = new System.Drawing.Point(42, 14);
+            this.RB_All.Name = "RB_All";
+            this.RB_All.Size = new System.Drawing.Size(49, 17);
+            this.RB_All.TabIndex = 1;
+            this.RB_All.TabStop = true;
+            this.RB_All.Text = "全选";
+            this.RB_All.UseVisualStyleBackColor = true;
+            this.RB_All.CheckedChanged += new System.EventHandler(this.RB_All_CheckedChanged);
+            // 
+            // RB_None
+            // 
+            this.RB_None.AutoSize = true;
+            this.RB_None.Location = new System.Drawing.Point(136, 15);
+            this.RB_None.Name = "RB_None";
+            this.RB_None.Size = new System.Drawing.Size(61, 17);
+            this.RB_None.TabIndex = 2;
+            this.RB_None.TabStop = true;
+            this.RB_None.Text = "全不选";
+            this.RB_None.UseVisualStyleBackColor = true;
+            this.RB_None.CheckedChanged += new System.EventHandler(this.RB_None_CheckedChanged);
             // 
             // Form_Main
             // 
@@ -275,10 +303,11 @@
             this.SC_Main.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SC_Main)).EndInit();
             this.SC_Main.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.NUD_Time)).EndInit();
+            this.GB_Analysis.ResumeLayout(false);
+            this.GB_Analysis.PerformLayout();
             this.GB_Setting.ResumeLayout(false);
             this.GB_Setting.PerformLayout();
-            this.GB_Analysis.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Time)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,6 +331,8 @@
         private System.Windows.Forms.CheckedListBox CLB_Item;
         private System.Windows.Forms.GroupBox GB_Setting;
         private System.Windows.Forms.Timer timer_Refresh;
+        private System.Windows.Forms.RadioButton RB_None;
+        private System.Windows.Forms.RadioButton RB_All;
     }
 }
 

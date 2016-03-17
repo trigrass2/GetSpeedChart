@@ -200,7 +200,8 @@ namespace GetSpeedChart
                                     rd.NextBytes(clr);
 
 
-                                    ls = new LineSeries("轨迹" + (LineIndex + 1).ToString());
+                                    ls = new LineSeries();
+                                    ls.Title = "轨迹" + (LineIndex + 1).ToString();
                                     ls.Color = OxyColor.FromRgb(clr[0], clr[1], clr[2]); ;
 
                                     pm.Series.Add(ls);
@@ -266,7 +267,7 @@ namespace GetSpeedChart
             else
             {
 
-                BT_Pause.Text = "继续";
+                BT_Pause.Text = "暂停";
                 Pause = false;
 
             }
@@ -329,6 +330,39 @@ namespace GetSpeedChart
             {
 
                 pm.Series[i].IsVisible = CLB_Item.GetItemChecked(i);
+
+            }
+            PV_Chart.Model.InvalidatePlot(true);
+            
+        }
+
+        private void RB_All_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CLB_Item.Items.Count <= 0 || pm == null || pm.Series.Count < 1 || pm.Series.Count != CLB_Item.Items.Count)
+
+            {
+                return;
+            }
+            for (int i = 0; i < CLB_Item.Items.Count; i++)
+            {
+
+                pm.Series[i].IsVisible = RB_All.Checked;
+
+            }
+            PV_Chart.Model.InvalidatePlot(true);
+        }
+
+        private void RB_None_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CLB_Item.Items.Count <= 0 || pm == null || pm.Series.Count < 1 || pm.Series.Count != CLB_Item.Items.Count)
+
+            {
+                return;
+            }
+            for (int i = 0; i < CLB_Item.Items.Count; i++)
+            {
+
+                pm.Series[i].IsVisible = !RB_None.Checked;
 
             }
             PV_Chart.Model.InvalidatePlot(true);

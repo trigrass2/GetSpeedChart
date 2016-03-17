@@ -1208,9 +1208,17 @@
         <member name="M:RobotKit.SoapClient.KillTask(System.String)">
             <summary>
             终止task的函数
+            
+            对于主程序的产生的任务好像关闭不了，不起作用 报soap exception 
             </summary>
             <param name="Taskname">任务名称</param>
             <returns>操作是否成功</returns>
+        </member>
+        <member name="M:RobotKit.SoapClient.KillAllTask">
+            <summary>
+            把CS8C里面所有的任务全部关掉
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:RobotKit.SoapClient.IsTaskRun(System.String)">
             <summary>
